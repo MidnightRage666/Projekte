@@ -4,7 +4,7 @@ const inputTask = document.getElementById("input-task");
 const addTaskBtn = document.getElementById("add-task");
 const inputSearch = document.getElementById("search-input");
 const taskList = document.querySelector(".task-list");
-const clearAllBtn = document.querySelector("clear-all");
+const clearAllBtn = document.querySelector(".clear-all");
 
 // add a task
 //? click on add task
@@ -56,9 +56,54 @@ function addTaskFun(e)
     }
 }
 
+// delete a task
+//! onclick on the parent
+taskList.addEventListener("click", deleteFun);
+function deleteFun(e)
+{
+    e.preventDefault();
+    
+    //! check if the clicked target is a delete button
+    if(e.target.classList.contains("deleteBtn"))
+        {
+            //! get the parent of that delete button
+            //! remove the parent
+            e.target.parentElement.remove();
+        }
+}
+
+// clear all
+clearAllBtn.addEventListener("click", e => {
+    e.preventDefault();
+
+    taskList.innerHTML = "";
+});
 
 // edit a task
+taskList.addEventListener("click", editFun);
+function editFun(e)
+{
+    e.preventDefault();
 
-// delete a task
+    if(e.target.classList.contains("editBtn"))
+    {
+        taskInput = e.target.parentElement.querySelector(".disabled-task");
 
+        taskInput.disabled = false;
+        taskInput.focus();
+
+        taskInput.addEventListener("keydown", function(event)
+        {
+            if(event.key === "Enter")
+            {
+                taskInput.disabled = true;
+            }
+        });
+
+        taskInput.addEventListener("blur", function()
+        {
+            taskInput.disabled = true;
+        });
+    }
+}
 // search task
