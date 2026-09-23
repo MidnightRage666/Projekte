@@ -12,36 +12,48 @@ addTaskBtn.addEventListener('click', addTaskFun)
 function addTaskFun(e)
 {
     e.preventDefault();
-    //! get out input value and trim
-    const taskText = inputTask.value;
-    //! create a new li
-    const newLi = document.createElement("li");
-    newLi.className = "task";
-    //! create an input filed -> type of text, disabled, class name of disabled-task
-    const taskInput = document.createElement("input");
-    taskInput.type = "text";
-    taskInput.disabled = true;
-    taskInput.className = "disabled-task"
-    //! put the input trimmed value into the disabled task input
-    taskInput.value = taskText;
-    //! put the input filed that contain the task into the new li
-    newLi.appendChild(taskInput);
-    //! create the delete btn and -> class of delete btn, text of delete button
-    const deleteBtn = document.createElement("button");
-    deleteBtn.innerText = "Delete";
-    deleteBtn.className = "deleteBtn"
-    //! put the delete btn into the li
-    newLi.appendChild(deleteBtn);
-    //! create an edit btm with class of edit btn
-    const editBtn = document.createElement("button");
-    editBtn.innerText = "Edit";
-    editBtn.className = "editBtn";
-    //! put the edit btn into the li too
-    newLi.appendChild(editBtn);
-    //! put the new li that contains all the information into the task list
-    taskList.appendChild(newLi);
-    //! clear the input task
-    inputTask.value = ""
+    
+    //! check if input Task is not empty
+    if (inputTask.value !== "")
+    {
+        //! get out input value and trim
+        const taskText = inputTask.value;
+        //! create a new li
+        const newLi = document.createElement("li");
+        newLi.className = "task";
+        //! create an input filed -> type of text, disabled, class name of disabled-task
+        const taskInput = document.createElement("input");
+        taskInput.type = "text";
+        taskInput.disabled = true;
+        taskInput.className = "disabled-task"
+        //! put the input trimmed value into the disabled task input
+        taskInput.value = taskText;
+        //! put the input filed that contain the task into the new li
+        newLi.appendChild(taskInput);
+        //! create the delete btn and -> class of delete btn, text of delete button
+        const deleteBtn = document.createElement("button");
+        deleteBtn.innerText = "Delete";
+        deleteBtn.className = "deleteBtn"
+        //! put the delete btn into the li
+        newLi.appendChild(deleteBtn);
+        //! create an edit btm with class of edit btn
+        const editBtn = document.createElement("button");
+        editBtn.innerText = "Edit";
+        editBtn.className = "editBtn";
+        //! put the edit btn into the li too
+        newLi.appendChild(editBtn);
+        //! put the new li that contains all the information into the task list
+        taskList.appendChild(newLi);
+        //! clear the input task
+        inputTask.value = ""
+    }
+    else
+    {
+        err.style.display = "block";
+        setTimeout(() => {
+            err.style.display = "none"
+        }, 2000);
+    }
 }
 
 
