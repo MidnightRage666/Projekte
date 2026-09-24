@@ -109,15 +109,35 @@ function editFun(e)
 
 // search task
 //! add a keyup event on the search input field
-//! get the value from the search input
-
-// turn the search value or text to lowercase
-//! get all the Li or Task
-//! loop through the Li or Tasks
-//! target the child of each looped li or type input or class of disabled task
-//! get the value of the input or value of disabled task
-
-// turn the value or text into lowercase
-//! check if the search word is in the looped input filed
-//! display it block or display it none
-
+inputSearch.addEventListener("keyup", searchFun)
+function searchFun(e)
+{
+    e.preventDefault();
+    //! get the value from the search input
+    // turn the search value or text to lowercase
+    const taskText = inputSearch.value.toLowerCase()
+    //! get all the Li or Task
+    const taskItems = document.querySelectorAll(".task");
+    //! loop through the Li or Tasks
+    for (let i = 0; i < taskItems.length; i++) {
+        const liTask = taskItems[i];
+        //! target the child of each looped li or type input or class of disabled task
+        //! get the value of the input or value of disabled task
+        // turn the value or text into lowercase
+        const taskTextItem = liTask
+        .querySelector(".disabled-task")
+        .value.toLowerCase();
+        
+        //! check if the search word is in the looped input filed
+        if(taskTextItem.indexOf(taskText) !== -1)
+            {
+                //! display it block or display it none
+                liTask.style.display = "block";
+            }
+            else
+            {
+                liTask.style.display = "none";
+            }
+        
+    }
+}
