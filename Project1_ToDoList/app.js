@@ -106,4 +106,18 @@ function editFun(e)
         });
     }
 }
+
 // search task
+//! add a keyup event on the search input field
+//! get the value from the search input
+
+// turn the search value or text to lowercase
+//! get all the Li or Task
+//! loop through the Li or Tasks
+//! target the child of each looped li or type input or class of disabled task
+//! get the value of the input or value of disabled task
+
+// turn the value or text into lowercase
+//! check if the search word is in the looped input filed
+//! display it block or display it none
+
