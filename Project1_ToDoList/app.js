@@ -137,7 +137,6 @@ function searchFun(e)
             else
             {
                 liTask.style.display = "none";
-            }
-        
+            }    
     }
 }
